@@ -11,13 +11,12 @@
  *
  * @author Administrator
  */
-class BbController extends Controller {
+class IndexController extends Controller {
 
     public function index(){
         $db = new Db();
         $a = 'hahahaha lishoujie';
         $this->assign('b', $a);
-        $this->assign('a','xxxx');
         $this->display('index');
         echo $a;
     }

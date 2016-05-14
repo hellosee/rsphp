@@ -4,7 +4,7 @@ ini_set( 'display_errors' , true );
 // 版本信息
 const VERSION     =   '1.0.0';
 // 类文件后缀
-const EXT               =   '.class.php'; 
+const EXT = '.class.php'; 
 /*
  * 常量定义
  */
@@ -18,27 +18,17 @@ defined('CONFIG_PATH') or define('CONFIG_PATH',  CORE_PATH.'config/');//框架�
 defined('A_CONFIG_PATH') or define('A_CONFIG_PATH',  APP_PATH.'config/');//框架核心配置目录
 defined('F_PATH') or define('F_PATH',  CORE_PATH.'function/');//APP配置目录
 defined('A_F_PATH') or define('A_F_PATH',  APP_PATH.'function/');//APP配置目录
-/*
- * 引入配置文件
- */
+//引入配置文件
 include_once( CONFIG_PATH . 'config.php' );
 if( file_exists( A_CONFIG_PATH . 'config.php' ) ){
 	include_once( A_CONFIG_PATH . 'config.php' );
 } 
-
-/*
- * 引入方法名
- */
+//引入方法名
 include_once( F_PATH . 'functions.php' );
 if( file_exists( A_F_PATH . 'functions.php' ) ){
 	include_once( A_F_PATH . 'functions.php' );
 } 
-
-
-
-/*
- * 自动加载库文件目录
- */
+//自动加载库文件目录
 set_include_path(get_include_path().PATH_SEPARATOR.LIB_PATH.'db/');
 set_include_path(get_include_path().PATH_SEPARATOR.C_PATH);
 set_include_path(get_include_path().PATH_SEPARATOR.M_PATH);
