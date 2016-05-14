@@ -7,18 +7,14 @@
  */
 
 /**
- * Description of Controller
+ * Description of Aaa
  *
  * @author Administrator
  */
-class Controller extends Html {
-  public function __construct() {
-  }
-
+class Aaa {
   //put your code here
-	public function coreindex(){
-		echo 'hahahaahh';
-	}
-    
-    
+  
+  public function test(){
+      echo 'yes i am here';
+  }
 }
