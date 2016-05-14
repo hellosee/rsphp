@@ -1,9 +1,4 @@
 <?php
-/**
- * Description of start
- *
- * @author Administrator
- */
 class Start {
     public static $loader;
 

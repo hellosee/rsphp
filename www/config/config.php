@@ -6,6 +6,6 @@
  * and open the template in the editor.
  */
 
-$GLOBALS['config']['default_controller'] = 'Bb';
+$GLOBALS['config']['default_controller'] = 'Index';
 $GLOBALS['config']['default_action'] = 'index';
 $GLOBALS['config']['default_language'] = 'zh_cn';

@@ -1,20 +1,54 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Html
- *
- * @author Administrator
- */
 class Html {
     private $_data = array();
-    public function assign($_k = "",$data = array()){
-      $this->_data[$_k] = $data;
+    public function assign($name = "",$value = array()){
+      $this->_data[$name] = $value;
+    }
+    public function __set($name,$value) {
+        $this->assign($name,$value);
+    }
+    /**
+     * 取得模板显示变量的值
+     * @access protected
+     * @param string $name 模板显示变量
+     * @return mixed
+     */
+    public function get($name='') {
+        return $this->_data[$name];      
+    }
+
+    public function __get($name) {
+        return $this->_data[$name]; 
+    }
+    
+    /**
+     * 检测模板变量的值
+     * @access public
+     * @param string $name 名称
+     * @return boolean
+     */
+    public function __isset($name) {
+        return $this->get($name);
+    }
+    /**
+     * 魔术方法 有不存在的操作的时候执行
+     * @access public
+     * @param string $method 方法名
+     * @param array $args 参数
+     * @return mixed
+     */
+    public function __call($method,$args) {
+        if( 0 === strcasecmp($method,ACTION_NAME.C('ACTION_SUFFIX'))) {
+            if(method_exists($this,'_empty')) {
+                // 如果定义了_empty操作 则调用
+                $this->_empty($method,$args);
+            } else {
+                die($method." not found");
+            }
+        }else{
+            E(__CLASS__.':'.$method.L('_METHOD_NOT_EXIST_'));
+            return;
+        }
     }
     /**
       * 调用模板,$file 为当前主程序的文件名，需要根据文件名去找对应目录的模板文件,$app_dir 应用目录名称
