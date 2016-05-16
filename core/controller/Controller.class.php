@@ -6,6 +6,5 @@ class Controller extends Html {
       if(method_exists($this,'_initialize'))
           $this->_initialize();
     }
-    
-    
+ 
 }

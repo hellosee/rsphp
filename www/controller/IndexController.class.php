@@ -3,11 +3,10 @@ class IndexController extends Controller {
 
     public function index(){
         $db = new Db();
+        $db->abc();
+        $this->assign('user', array('a'=>'111','b'=>'2222'));
         Log::logs('index', 'hello');
-        $a = 'hahahaha lishoujie';
-        $this->assign('b', $a);
         $this->display('index');
-        echo $a;
     }
     
     public function aa(){

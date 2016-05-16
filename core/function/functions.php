@@ -150,5 +150,22 @@ function is_mobile_request()
     else
         return false;
 }
-
+/**
+* 获取客户端IP地址
+*/
+function getip() {
+   $onlineip = '';
+   if (getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
+       $onlineip = getenv('HTTP_CLIENT_IP');
+   } elseif (getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+       $onlineip = getenv('REMOTE_ADDR');
+   } elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+       $onlineip = $_SERVER['REMOTE_ADDR'];
+   }
+   if(!@ereg("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$",$onlineip)) {
+       return "";
+   }else{
+       return addslashes(htmlspecialchars($onlineip));
+   }
+}
 

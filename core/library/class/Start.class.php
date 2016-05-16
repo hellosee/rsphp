@@ -1,8 +1,6 @@
 <?php
 class Start {
-    public static $loader;
-
-     public static function init() {
+    public static function init() {
         spl_autoload_register(array('Start','autoload'));
         $c = $GLOBALS['c'] = v('c') ? v('c') : c('default_controller');
         $a = $GLOBALS['a'] = v('a') ? v('a') : c('default_action');
@@ -10,7 +8,6 @@ class Start {
         $a =  basename( z($a) );
         $cName = $c .'Controller' ; 
         $cP = A_C_PATH . $cName . EXT;
-
         if( !file_exists( $cP ) ) {
             $cP = C_PATH . $cName . EXT;
             if( !file_exists( $cP ) ) die('Can\'t find controller file - ' . $cName . EXT );
@@ -19,8 +16,7 @@ class Start {
         if( !class_exists( $cName ) ) die('Can\'t find class - '   .  $cName );
         $o = new $cName;
         if( !method_exists( $o , $a ) ) die('Can\'t find method - '   . $a . ' ');
-        call_user_func( array( $o , $a ) );
-        
+        call_user_func( array( $o , $a ) ); 
      }
 
      public static function autoload($class) {

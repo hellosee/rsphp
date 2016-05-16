@@ -6,9 +6,9 @@
 
 </head>
 <body>
-欢迎使用本框架<?php
-echo $b;
-echo $a;
+欢迎使用本框架
+<?php
+print_r($user);
 ?>
 </body>
 </html>

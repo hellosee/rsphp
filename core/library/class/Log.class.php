@@ -17,7 +17,7 @@ class Log {
 				$log_path = $log_dir . date('Y_m_d') . '.log';
 			}
 			$fp = fopen($log_dir . $logs_type . '_' . date('Y_m_d') . '.log', 'a');
-			fwrite($fp, date('Y-m-d H:i:s') . ' ' . self::getip() . ' ' . $logs_txt . ' ' . chr(10));
+			fwrite($fp, date('Y-m-d H:i:s') . ' ' . getip() . ' ' . $logs_txt . ' ' . chr(10));
 			fclose($fp);
 		}
 		catch(Exception $e) {
@@ -37,22 +37,4 @@ class Log {
 		return true;
 
     }
-	/**
-	 * 获取客户端IP地址
-	 */
-	public static function getip() {
-		$onlineip = '';
-		if (getenv('HTTP_CLIENT_IP') && strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
-			$onlineip = getenv('HTTP_CLIENT_IP');
-		} elseif (getenv('REMOTE_ADDR') && strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
-			$onlineip = getenv('REMOTE_ADDR');
-		} elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
-			$onlineip = $_SERVER['REMOTE_ADDR'];
-		}
-		if(!@ereg("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$",$onlineip)) {
-			return "";
-		}else{
-			return addslashes(htmlspecialchars($onlineip));
-		}
-	}
 }
