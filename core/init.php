@@ -38,10 +38,6 @@ set_include_path(get_include_path().PATH_SEPARATOR.A_L_PATH);
 
 spl_autoload_extensions(EXT);
 
-require_once LIB_PATH.'Router'.EXT;
-
-$dispatch = new Router($_route);
-$dispatch->dispatch();
-//require_once LIB_PATH.'Start'.EXT;
-
-//Start::init();
+require_once LIB_PATH.'Start'.EXT;
+$_route = isset($_SERVER['PATH_INFO']) ? trim($_SERVER['PATH_INFO'],'/') : '';
+Start::init($_route);

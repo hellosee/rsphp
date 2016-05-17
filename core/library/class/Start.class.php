@@ -1,7 +1,10 @@
 <?php
 class Start {
-    public static function init() {
+    public static function init($_route = "") {
         spl_autoload_register(array('Start','autoload'));
+        $router = new Router($_route);
+        $router->parseUrls();
+        /*
         $c = $GLOBALS['c'] = v('c') ? v('c') : c('default_controller');
         $a = $GLOBALS['a'] = v('a') ? v('a') : c('default_action');
         $c = basename(ucfirst( z($c) ));
@@ -17,6 +20,7 @@ class Start {
         $o = new $cName;
         if( !method_exists( $o , $a ) ) die('Can\'t find method - '   . $a . ' ');
         call_user_func( array( $o , $a ) ); 
+         * */
      }
 
      public static function autoload($class) {
